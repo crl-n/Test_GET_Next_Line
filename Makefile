@@ -11,7 +11,10 @@ IFLAG = -I$(GNL_PATH)
 LIBFLAG = -L$(LIB_PATH) -lft
 
 SRCS = main.c \
-	   $(GNL_PATH)get_next_line.c
+	   $(GNL_PATH)get_next_line.c \
+
+LIBSRCS = $(LIB_PATH)ft_strncpy.c \
+		  $(LIB_PATH)ft_strsub.c \
 
 all: $(NAME)
 
