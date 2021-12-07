@@ -4,7 +4,7 @@ GNL_PATH = ../GET_Next_Line/
 
 LIB_PATH = ../libft/
 
-CFLAGS = -g -pedantic -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 IFLAG = -I$(GNL_PATH)
 
@@ -14,12 +14,18 @@ SRCS = main.c \
 	   $(GNL_PATH)get_next_line.c \
 
 LIBSRCS = $(LIB_PATH)ft_strncpy.c \
+		  $(LIB_PATH)ft_strnew.c \
+		  $(LIB_PATH)ft_strdup.c \
 		  $(LIB_PATH)ft_strsub.c \
+		  $(LIB_PATH)ft_strlen.c \
+		  $(LIB_PATH)ft_memchr.c \
+		  $(LIB_PATH)ft_memcpy.c \
+		  $(LIB_PATH)ft_memmove.c \
 
 all: $(NAME)
 
 $(NAME): $(SRCS)
-	gcc $(CFLAGS) $(SRCS) $(IFLAG) $(LIBFLAG)
+	gcc $(CFLAGS) $(SRCS) $(LIBSRCS) $(IFLAG)
 
 clean:
 
