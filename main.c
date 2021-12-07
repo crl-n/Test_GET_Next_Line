@@ -10,6 +10,7 @@ int	main(void)
 
 	printf("Test GET_Next_Line\n");
 
+	line = NULL;
 	fd = open("hello.txt", O_RDONLY);
 	if (fd > 2)
 	{
