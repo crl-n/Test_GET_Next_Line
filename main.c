@@ -1,17 +1,23 @@
 #include "get_next_line.h"
+#include "test_get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	char	*line;
 	int		ret;
 	int		fd;
 
-	printf("Test GET_Next_Line\n");
+	printf(BLU "\n********************************************************************************\n\n" RESET);
+	printf("\t\t\t\tTest GET_Next_Line\n");
+	printf(BLU "\n********************************************************************************\n" RESET);
 
 	line = NULL;
-	fd = open("hello.txt", O_RDONLY);
+	if (argc > 1)
+		fd = open(argv[1], O_RDONLY);
+	else
+		fd = open("input", O_RDONLY);
 	if (fd > 2)
 	{
 		while (1)
@@ -21,7 +27,8 @@ int	main(void)
 				break ;
 			printf("line: %s\n", line);
 			printf("ret: %d\n", ret);
-			free(line);
+			if (line)
+				free(line);
 		}
 		close(fd);
 	}
