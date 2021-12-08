@@ -24,9 +24,8 @@ LIBSRCS = $(LIB_PATH)ft_strncpy.c \
 
 all: $(NAME)
 
-$(LIBFLAG): $(shell make -C $(LIB_PATH))
-
 $(NAME): $(SRCS)
+	$(MAKE) -C $(LIB_PATH)
 	gcc $(CFLAGS) $(SRCS) $(LIBFLAG) $(IFLAG) -o $(NAME)
 
 clean:
