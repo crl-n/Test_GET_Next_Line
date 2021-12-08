@@ -1,8 +1,8 @@
-NAME = run_tests
+NAME = test_gnl
 
 GNL_PATH = ../GET_Next_Line/
 
-LIB_PATH = ../GET_Next_Line/libft/
+LIB_PATH = ../libft/
 
 CFLAGS = -g -Wall -Wextra -Werror
 
