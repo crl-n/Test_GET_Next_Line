@@ -2,7 +2,7 @@ NAME = run_tests
 
 GNL_PATH = ../GET_Next_Line/
 
-LIB_PATH = ../libft/
+LIB_PATH = ../GET_Next_Line/libft/
 
 CFLAGS = -g -Wall -Wextra -Werror
 
@@ -24,8 +24,10 @@ LIBSRCS = $(LIB_PATH)ft_strncpy.c \
 
 all: $(NAME)
 
+$(LIBFLAG): $(shell make -C $(LIB_PATH))
+
 $(NAME): $(SRCS)
-	gcc $(CFLAGS) $(SRCS) $(LIBSRCS) $(IFLAG) -o $(NAME)
+	gcc $(CFLAGS) $(SRCS) $(LIBFLAG) $(IFLAG) -o $(NAME)
 
 clean:
 
