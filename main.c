@@ -2,6 +2,7 @@
 #include "test_get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
+#include <ctype.h>
 
 int	main(int argc, char **argv)
 {
@@ -12,10 +13,18 @@ int	main(int argc, char **argv)
 	line = NULL;
 	if (argc > 1)
 	{
-		fd = open(argv[1], O_RDONLY);
-		printf(BLU "\n********************************************************************************\n\n" RESET);
-		printf("\t\t\t\tTest GET_Next_Line\n");
-		printf(BLU "\n********************************************************************************\n" RESET);
+		if (isdigit(atoi(argv[1])))
+			fd = atoi(argv[1]);
+		else
+		{
+			fd = open(argv[1], O_RDONLY);
+			if (strcmp("input", argv[1]))
+			{
+				printf(BLU "\n********************************************************************************\n\n" RESET);
+				printf("\t\t\t\tTest GET_Next_Line\n");
+				printf(BLU "\n********************************************************************************\n" RESET);
+			}
+		}
 	}
 	else
 		fd = open("input", O_RDONLY);
