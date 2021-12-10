@@ -37,12 +37,21 @@ echo "${green}\n# Two lines of 8 chars${reset}"
 echo "abcdabcd" >> input
 ./test_gnl
 
+# 10 lines of 8 chars
+echo "${green}\n# 10 lines of 8 chars${reset}"
+for i in {1..8}
+do
+	echo "abcdabcd" >> input
+done
+./test_gnl
+
 # Middle tests
 echo "${magenta}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "\t\t\t\tMiddle Tests"
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${reset}"
 
 # Too big BUFF_SIZE
+rm input
 for i in {1..8}
 do
 	echo "dfagjaljgk" >> input
