@@ -34,8 +34,7 @@ echo "abcdabcd" > input
 
 # Two lines of 8 chars
 echo "${green}\n# Two lines of 8 chars${reset}"
-echo "abcdabcd" > input
-echo "abcdabcd" > input
+echo "abcdabcd" >> input
 ./test_gnl
 
 # Middle tests
