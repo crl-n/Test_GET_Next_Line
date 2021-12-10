@@ -20,4 +20,10 @@ set_buff_size 8
 echo "abcdabcd" > input
 ./test_gnl
 
-
+# Too big BUFF_SIZE
+for i in {1..8}
+do
+	echo "dfagjaljgk" >> input
+done
+set_buff_size 1000000
+./test_gnl
