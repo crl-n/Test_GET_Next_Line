@@ -9,13 +9,14 @@ int	main(int argc, char **argv)
 	int		ret;
 	int		fd;
 
-	printf(BLU "\n********************************************************************************\n\n" RESET);
-	printf("\t\t\t\tTest GET_Next_Line\n");
-	printf(BLU "\n********************************************************************************\n" RESET);
-
 	line = NULL;
 	if (argc > 1)
+	{
 		fd = open(argv[1], O_RDONLY);
+		printf(BLU "\n********************************************************************************\n\n" RESET);
+		printf("\t\t\t\tTest GET_Next_Line\n");
+		printf(BLU "\n********************************************************************************\n" RESET);
+	}
 	else
 		fd = open("input", O_RDONLY);
 	if (fd > 2)
