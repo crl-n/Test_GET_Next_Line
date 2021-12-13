@@ -27,34 +27,160 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_buff_size 8
 echo "# BUFF SIZE: 8${reset}"
 
-# Line of 8 chars
-echo "${green}\n# One line of 8 chars${reset}"
+# Line of 8 chars from STDOUT
+echo "${green}\n# One line of 8 chars from STDOUT${reset}"
 echo "abcdabcd" > input
-./test_gnl
+./test_gnl < input
 
-# Two lines of 8 chars
-echo "${green}\n# Two lines of 8 chars${reset}"
+# Two lines of 8 chars from STDOUT
+echo "${green}\n# Two lines of 8 chars from STDOUT${reset}"
 echo "abcdabcd" >> input
-./test_gnl
+./test_gnl < input
 
-# 10 lines of 8 chars
-echo "${green}\n# 10 lines of 8 chars${reset}"
+# 10 lines of 8 chars from STDOUT
+echo "${green}\n# 10 lines of 8 chars from STDOUT${reset}"
 for i in {1..8}
 do
 	echo "abcdabcd" >> input
 done
-./test_gnl
+./test_gnl < input
+
+rm input
+
+# Line of 8 chars from file
+echo "${green}\n# One line of 8 chars from file${reset}"
+echo "abcdabcd" > input
+./test_gnl "input"
+
+# Two lines of 8 chars from file
+echo "${green}\n# Two lines of 8 chars from file${reset}"
+echo "abcdabcd" >> input
+./test_gnl "input"
+
+# 10 lines of 8 chars from file
+echo "${green}\n# 10 lines of 8 chars from file${reset}"
+for i in {1..8}
+do
+	echo "abcdabcd" >> input
+done
+./test_gnl "input"
+
+rm input
 
 # Middle tests
 echo "${magenta}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "\t\t\t\tMiddle Tests"
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${reset}"
 
+# Line of 16 chars from STDOUT
+echo "${green}\n# One line of 16 chars from STDOUT${reset}"
+echo "abcdabcd12345678" > input
+./test_gnl < input
+
+# Two lines of 16 chars from STDOUT
+echo "${green}\n# Two lines of 16 chars from STDOUT${reset}"
+echo "abcdabcd12345678" >> input
+./test_gnl < input
+
+# 10 lines of 16 chars from STDOUT
+echo "${green}\n# 10 lines of 16 chars from STDOUT${reset}"
+for i in {1..16}
+do
+	echo "abcdabcd12345678" >> input
+done
+./test_gnl < input
+
+rm input
+
+# Line of 16 chars from file
+echo "${green}\n# One line of 16 chars from file${reset}"
+echo "abcdabcd12345678" > input
+./test_gnl "input"
+
+# Two lines of 16 chars from file
+echo "${green}\n# Two lines of 16 chars from file${reset}"
+echo "abcdabcd12345678" >> input
+./test_gnl "input"
+
+# 10 lines of 16 chars from file
+echo "${green}\n# 10 lines of 16 chars from file${reset}"
+for i in {1..16}
+do
+	echo "abcdabcd12345678" >> input
+done
+./test_gnl "input"
+
+# Advanced tests
+echo "${magenta}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "\t\t\t\tAdvanced Tests"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${reset}"
+
+# Line of 4 chars from STDOUT
+echo "${green}\n# One line of 4 chars from STDOUT${reset}"
+echo "xyzx" > input
+./test_gnl < input
+
+# Two lines of 4 chars from STDOUT
+echo "${green}\n# Two lines of 4 chars from STDOUT${reset}"
+echo "xyzx" >> input
+./test_gnl < input
+
+# 10 lines of 4 chars from STDOUT
+echo "${green}\n# 10 lines of 4 chars from STDOUT${reset}"
+for i in {1..4}
+do
+	echo "xyzx" >> input
+done
+./test_gnl < input
+
+rm input
+
+# Line of 4 chars from file
+echo "${green}\n# One line of 4 chars from file${reset}"
+echo "xyzx" > input
+./test_gnl "input"
+
+# Two lines of 4 chars from file
+echo "${green}\n# Two lines of 4 chars from file${reset}"
+echo "xyzx" >> input
+./test_gnl "input"
+
+# 10 lines of 4 chars from file
+echo "${green}\n# 10 lines of 4 chars from file${reset}"
+for i in {1..4}
+do
+	echo "xyzx" >> input
+done
+./test_gnl "input"
+
+# Line of 4 chars from file, no newline
+echo "${green}\n# One line of 4 chars from file, no newline${reset}"
+printf "xyzx" > input
+./test_gnl "input"
+
+# One line of 8 chars from file, no newline
+echo "${green}\n# One line of 8 chars from file, no newline${reset}"
+printf "ijklijkl" > input
+
+# One line of 16 chars from file, no newline
+echo "${green}\n# One line of 16 chars from file, no newline${reset}"
+printf "azazbabaliligugu" | ./test_gnl
+
+# Empty line from file
+echo "${green}\n# Empty line from file${reset}"
+echo "" > input
+./test_gnl "input" | cat -e
+
+#### END OF EVAL FORM TESTS
+
+#### START OF EXTRA TESTS
+
 # Too big BUFF_SIZE
+echo "${green}\n# BUFF_SIZE = 1 000 000${reset}"
 rm input
 for i in {1..8}
 do
 	echo "dfagjaljgk" >> input
 done
 set_buff_size 1000000
-./test_gnl
+./test_gnl < input
