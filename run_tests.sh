@@ -155,12 +155,11 @@ done
 
 # Line of 4 chars from file, no newline
 echo "${green}\n# One line of 4 chars from file, no newline${reset}"
-printf "xyzx" > input
-./test_gnl "input"
+printf "xyzx" | ./test_gnl
 
 # One line of 8 chars from file, no newline
 echo "${green}\n# One line of 8 chars from file, no newline${reset}"
-printf "ijklijkl" > input
+printf "ijklijkl" | ./test_gnl
 
 # One line of 16 chars from file, no newline
 echo "${green}\n# One line of 16 chars from file, no newline${reset}"
