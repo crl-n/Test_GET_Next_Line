@@ -14,7 +14,9 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		if (isdigit(atoi(argv[1])))
+		{
 			fd = atoi(argv[1]);
+		}
 		else
 		{
 			fd = open(argv[1], O_RDONLY);
@@ -27,18 +29,23 @@ int	main(int argc, char **argv)
 		}
 	}
 	else
-		fd = open("input", O_RDONLY);
-	if (fd > 2)
 	{
+		fd = 0;
+	}
+	if (fd >= 0)
+	{
+		size_t	i = 1;
+		printf("FD: %d\n", fd);
 		while (1)
 		{
 			ret = get_next_line(fd, &line);
 			if (ret < 1)
 				break ;
-			printf("line: %s\n", line);
+			printf("line %zu: %s\n", i, line);
 			printf("ret: %d\n", ret);
 			if (line)
 				free(line);
+			i++;
 		}
 		close(fd);
 	}
