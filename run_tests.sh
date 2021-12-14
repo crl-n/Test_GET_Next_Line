@@ -170,16 +170,31 @@ echo "${green}\n# Empty line from file${reset}"
 echo "" > input
 ./test_gnl "input" | cat -e
 
+# Error managment tests
+echo "${magenta}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "\t\t\t\tError Management Tests"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${reset}"
+
+# Arbitrary FD
+./test_gnl 42
+
+#Different bufff sizes
+set_buff_size 1
+echo "# BUFF SIZE: 1${reset}"
+./test_gnl bible
+
+set_buff_size 32
+echo "# BUFF SIZE: 32${reset}"
+./test_gnl bible
+
+set_buff_size 9999
+echo "# BUFF SIZE: 9999${reset}"
+./test_gnl bible
+
+set_buff_size 1000000
+echo "# BUFF SIZE: 1000000${reset}"
+./test_gnl bible
+
 #### END OF EVAL FORM TESTS
 
 #### START OF EXTRA TESTS
-
-# Too big BUFF_SIZE
-echo "${green}\n# BUFF_SIZE = 1 000 000${reset}"
-rm input
-for i in {1..8}
-do
-	echo "dfagjaljgk" >> input
-done
-set_buff_size 1000000
-./test_gnl < input
