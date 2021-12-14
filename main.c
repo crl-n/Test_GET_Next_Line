@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <ctype.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
@@ -39,10 +41,10 @@ int	main(int argc, char **argv)
 		while (1)
 		{
 			ret = get_next_line(fd, &line);
-			if (ret < 1)
-				break ;
 			printf("line %zu: %s\n", i, line);
 			printf("ret: %d\n", ret);
+			if (ret < 1)
+				break ;
 			if (line)
 			{
 				free(line);
