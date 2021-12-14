@@ -84,7 +84,7 @@ echo "abcdabcd12345678" >> input
 
 # 10 lines of 16 chars from STDOUT
 echo "${green}\n# 10 lines of 16 chars from STDOUT${reset}"
-for i in {1..16}
+for i in {1..8}
 do
 	echo "abcdabcd12345678" >> input
 done
@@ -104,7 +104,7 @@ echo "abcdabcd12345678" >> input
 
 # 10 lines of 16 chars from file
 echo "${green}\n# 10 lines of 16 chars from file${reset}"
-for i in {1..16}
+for i in {1..8}
 do
 	echo "abcdabcd12345678" >> input
 done
@@ -127,7 +127,7 @@ echo "xyzx" >> input
 
 # 10 lines of 4 chars from STDOUT
 echo "${green}\n# 10 lines of 4 chars from STDOUT${reset}"
-for i in {1..4}
+for i in {1..8}
 do
 	echo "xyzx" >> input
 done
@@ -147,7 +147,7 @@ echo "xyzx" >> input
 
 # 10 lines of 4 chars from file
 echo "${green}\n# 10 lines of 4 chars from file${reset}"
-for i in {1..4}
+for i in {1..8}
 do
 	echo "xyzx" >> input
 done
@@ -183,17 +183,17 @@ set_buff_size 1
 echo "# BUFF SIZE: 1${reset}"
 ./test_gnl bible
 
-set_buff_size 32
-echo "# BUFF SIZE: 32${reset}"
-./test_gnl bible
-
-set_buff_size 9999
-echo "# BUFF SIZE: 9999${reset}"
-./test_gnl bible
-
-set_buff_size 1000000
-echo "# BUFF SIZE: 1000000${reset}"
-./test_gnl bible
+#set_buff_size 32
+#echo "# BUFF SIZE: 32${reset}"
+#./test_gnl bible
+#
+#set_buff_size 9999
+#echo "# BUFF SIZE: 9999${reset}"
+#./test_gnl bible
+#
+#set_buff_size 1000000
+#echo "# BUFF SIZE: 1000000${reset}"
+#./test_gnl bible
 
 #### END OF EVAL FORM TESTS
 
