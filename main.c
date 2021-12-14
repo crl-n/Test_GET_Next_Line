@@ -54,7 +54,11 @@ int	main(int argc, char **argv)
 			printf("line %zu: %s\n", i, line);
 			printf("ret: %d\n", ret);
 			if (ret < 1 || i == 100)
+			{
+				if (line)
+					free(line);
 				break ;
+			}
 			if (line)
 			{
 				free(line);
