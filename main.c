@@ -44,7 +44,10 @@ int	main(int argc, char **argv)
 			printf("line %zu: %s\n", i, line);
 			printf("ret: %d\n", ret);
 			if (line)
+			{
 				free(line);
+				line = NULL;
+			}
 			i++;
 		}
 		close(fd);
