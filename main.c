@@ -6,6 +6,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+static int	isnumeric(const char *str)
+{
+	for (size_t i = 0; i < strlen(str); i++)
+	{
+		if (!isdigit(str[i]))
+			return (0);
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	char	*line;
@@ -15,7 +25,7 @@ int	main(int argc, char **argv)
 	line = NULL;
 	if (argc > 1)
 	{
-		if (isdigit(atoi(argv[1])))
+		if (isnumeric(argv[1]))
 		{
 			fd = atoi(argv[1]);
 		}
@@ -43,7 +53,7 @@ int	main(int argc, char **argv)
 			ret = get_next_line(fd, &line);
 			printf("line %zu: %s\n", i, line);
 			printf("ret: %d\n", ret);
-			if (ret < 1)
+			if (ret < 1 || i == 100)
 				break ;
 			if (line)
 			{
