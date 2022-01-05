@@ -2,11 +2,13 @@ NAME = test_gnl
 
 GNL_PATH = ../GET_Next_Line/
 
-LIB_PATH = ../libft/
+LIB_PATH = ../GET_Next_Line/libft/
 
 CFLAGS = -g -Wall -Wextra -Werror
 
 IFLAG = -I$(GNL_PATH)
+
+IFLAG2 = -I$(LIB_PATH)
 
 LIBFLAG = -L$(LIB_PATH) -lft
 
@@ -26,7 +28,7 @@ all: $(NAME)
 
 $(NAME): $(SRCS)
 	$(MAKE) -C $(LIB_PATH)
-	gcc $(CFLAGS) $(SRCS) $(LIBFLAG) $(IFLAG) -o $(NAME)
+	gcc $(CFLAGS) $(SRCS) $(LIBFLAG) $(IFLAG) $(IFLAG) -o $(NAME)
 
 clean:
 
